@@ -5,17 +5,30 @@ namespace Student{
   Student::Student(IDatabase* databaseConnector)
     : m_databaseConnector(databaseConnector)
   {
-    m_databaseConnector->connect();
+
+  }
+  
+  bool Student::ConnectToDatabase() 
+  {
+    
+  }
+  
+  void Student::DisconnectFromDatabase() 
+  {
+    
+  }
+  
+  int Student::QueryIndex(std::string Name) 
+  {
+    
+  }
+  
+  std::string Student::QueryName(int index) 
+  {
+    
   }
 
   Student::~Student(){
 
   }
-
-  int Student::getIndexNo() 
-  {
-    m_databaseConnector->query();
-  }
-
-
 }//namespace Student

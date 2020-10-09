@@ -14,9 +14,10 @@ namespace Student
 {
   class IDatabase{
   public:
-
-    virtual bool connect() = 0;
-    virtual void query() = 0;
+    virtual bool Connect() = 0;
+    virtual bool Disconnect() = 0;
+    virtual bool IsConnected() = 0;
+    virtual void Query(std::string query) = 0;
   private:
   };
 

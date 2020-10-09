@@ -1,20 +1,21 @@
-/**
- * @author your name (you@domain.com)
- * @brief 
- * @version 0.1
- * @date 2020-09-30
- * 
- * @copyright Copyright (c) 2020
- * 
- */
-#pragma once
+# Student 
 
-#include <IDatabase.hpp>
+Database interface:
 
-namespace Student
-{
-  class Student{
+```cpp 
+  class IDatabase{
   public:
+    virtual bool Connect() = 0;
+    virtual bool Disconnect() = 0;
+    virtual bool IsConnected() = 0;
+    virtual void Query(std::string query) = 0;
+  private:
+  };
+```
+
+Student wrapper class implementation:
+
+```cpp
     /**
      * @brief Default contstructor
      * 
@@ -45,25 +46,25 @@ namespace Student
      * @return none
      */
     void DisconnectFromDatabase();
-    
+
     /**
-     * @brief This is the function used to query index number
-     * 
-     * @param std::string Name 
+     * @brief This is the function used to query index number.
+     *        This function should handle reconnection with database in case when the connection is down.
+     *
+     * @param std::string Name
      * @return int Index
      */
     int QueryIndex(std::string Name);
 
     /**
-     * @brief This is the function used to query student name
-     * 
-     * @param int index 
+     * @brief This is the function used to query student name.
+     *        This function should handle reconnection with database in case when the connection is down.
+     *
+     * @param int index
      * @return std::string Name
      */
     std::string QueryName(int index);
 
   private:
       IDatabase* m_databaseConnector;
-  };
-
-} // namespace Student
+```
